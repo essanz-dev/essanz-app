@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Essanz Demo — das Dashboard der kostenlosen Version mit fiktiven Beispielwerten.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%231F7A5C'/%3E%3Cpath d='M4 17 L10 10 L14 13 L20 6' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='20' cy='6' r='1.9' fill='white'/%3E%3C/svg%3E">
+<title>Essanz — Demo-Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --bg:#EFF2F0;
+    --surface:#FFFFFF;
+    --surface-2:#E3E8E3;
+    --ink:#10161F;
+    --ink-soft:#4B5561;
+    --ink-faint:#7C8690;
+    --line:rgba(16,22,31,.13);
+    --line-strong:rgba(16,22,31,.22);
+    --accent:#1F7A5C;
+    --accent-ink:#FFFFFF;
+    --accent-soft:rgba(31,122,92,.12);
+    --warn:#B4791E;
+    --warn-soft:rgba(180,121,30,.14);
+    --bad:#A3402A;
+    --bad-soft:rgba(163,64,42,.13);
+    --data-blue:#2B4C7E;
+    --shadow: 0 1px 2px rgba(16,22,31,.06), 0 12px 32px -16px rgba(16,22,31,.18);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E141F; --surface:#161E2B; --surface-2:#1E2837;
+      --ink:#ECEEEE; --ink-soft:#A7B0BC; --ink-faint:#77828F;
+      --line:rgba(236,238,238,.12); --line-strong:rgba(236,238,238,.22);
+      --accent:#3FAE81; --accent-ink:#06140F; --accent-soft:rgba(63,174,129,.16);
+      --warn:#DDA84B; --warn-soft:rgba(221,168,75,.16);
+      --bad:#D9704F; --bad-soft:rgba(217,112,79,.16);
+      --data-blue:#7099CE;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 20px 40px -20px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E141F; --surface:#161E2B; --surface-2:#1E2837;
+    --ink:#ECEEEE; --ink-soft:#A7B0BC; --ink-faint:#77828F;
+    --line:rgba(236,238,238,.12); --line-strong:rgba(236,238,238,.22);
+    --accent:#3FAE81; --accent-ink:#06140F; --accent-soft:rgba(63,174,129,.16);
+    --warn:#DDA84B; --warn-soft:rgba(221,168,75,.16);
+    --bad:#D9704F; --bad-soft:rgba(217,112,79,.16);
+    --data-blue:#7099CE;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 20px 40px -20px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.5;
+  }
+  h1,h2,h3{ font-family:'Fraunces', Georgia, serif; font-weight:600; text-wrap:balance; margin:0; letter-spacing:-.01em; }
+  .num{ font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  a{ color:inherit; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  p{ color:var(--ink-soft); max-width:62ch; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:11px 20px; border-radius:9px;
+    font-size:.92rem; font-weight:600; text-decoration:none; border:1px solid transparent;
+    cursor:pointer; font-family:'IBM Plex Sans', sans-serif;
+  }
+  .btn-primary{ background:var(--accent); color:var(--accent-ink); }
+  .btn-primary:hover{ filter:brightness(1.06); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--line-strong); }
+  .btn-ghost:hover{ border-color:var(--ink-faint); }
+
+  /* demo banner */
+  .demoband{
+    background:var(--surface-2); border-bottom:1px solid var(--line);
+    font-size:.86rem; color:var(--ink-soft); padding:11px 0;
+  }
+  .demoband .wrap{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .demoband b{ color:var(--ink); }
+  .demoband a{ text-decoration:underline; text-underline-offset:2px; white-space:nowrap; }
+
+  header.site{
+    position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600; font-size:1.18rem; text-decoration:none; }
+  .brand .mark{ width:26px; height:26px; border-radius:7px; background:var(--accent); display:grid; place-items:center; flex:none; }
+  .brand .mark svg{ width:15px; height:15px; }
+
+  section{ padding:56px 0; }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:.78rem; font-weight:500; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); }
+
+  /* dashboard shell */
+  .dash{ background:var(--surface); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); overflow:hidden; }
+  .dash-top{ padding:28px 32px 0; }
+  .dash-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:20px; }
+  .dash-head .obj{ font-size:.94rem; font-weight:600; }
+  .dash-head .stamp{ font-family:'IBM Plex Mono',monospace; font-size:.76rem; color:var(--ink-faint); }
+
+  .hero-fig{ display:flex; flex-wrap:wrap; align-items:flex-end; gap:36px; margin-bottom:22px; }
+  .hero-fig .lbl{ font-size:.8rem; color:var(--ink-faint); margin-bottom:6px; }
+  .hero-fig .fig{ font-family:'IBM Plex Mono',monospace; font-size:2.6rem; font-weight:600; letter-spacing:-.01em; }
+  .deltas{ display:flex; gap:26px; flex-wrap:wrap; padding-bottom:6px; }
+  .deltas .d v{ display:block; font-family:'IBM Plex Mono',monospace; font-size:1.05rem; font-weight:600; }
+  .deltas .d s{ display:block; font-size:.74rem; color:var(--ink-faint); margin-top:1px; }
+  .up{ color:var(--accent); }
+
+  .alloc-strip{ display:flex; height:8px; border-radius:99px; overflow:hidden; margin-bottom:9px; }
+  .al{ display:block; height:100%; }
+  .al-immo{ background:var(--data-blue); } .al-wp{ background:var(--accent); } .al-liq{ background:var(--ink-faint); }
+  .alloc-legend{ display:flex; gap:16px; flex-wrap:wrap; font-size:.78rem; color:var(--ink-faint); margin-bottom:28px; }
+  .alloc-legend .sw{ display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:6px; }
+  .sw-immo{ background:var(--data-blue); } .sw-wp{ background:var(--accent); } .sw-liq{ background:var(--ink-faint); }
+
+  .dash-body{ padding:0 32px 32px; }
+  .dash-section{ padding-top:28px; border-top:1px solid var(--line); }
+  .dash-section h2{ font-size:1.15rem; margin-bottom:4px; }
+  .dash-section .note{ font-size:.86rem; color:var(--ink-faint); margin:0 0 16px; max-width:70ch; }
+
+  .zahlen-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+  @media (max-width:920px){ .zahlen-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:460px){ .zahlen-grid{ grid-template-columns:1fr; } }
+  .zt{ border:1px solid var(--line); border-radius:12px; padding:14px; background:var(--surface); }
+  .zt .lbl{ font-size:.76rem; color:var(--ink-soft); font-weight:500; }
+  .zt .val{ font-family:'IBM Plex Mono',monospace; font-size:1.42rem; font-weight:600; margin-top:7px; display:flex; align-items:center; gap:8px; }
+  .zt .ziel{ font-size:.72rem; color:var(--ink-faint); margin-top:5px; }
+  .dot{ width:8px; height:8px; border-radius:50%; flex:none; }
+  .dot.g{ background:var(--accent); } .dot.y{ background:var(--warn); } .dot.r{ background:var(--bad); }
+
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:760px){ .two{ grid-template-columns:1fr; } }
+  .card{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 20px; }
+  .card .bh{ font-size:.72rem; font-weight:640; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; margin-bottom:12px; }
+  table{ width:100%; border-collapse:collapse; font-size:.87rem; }
+  th{ text-align:right; font-weight:560; color:var(--ink-faint); font-size:.72rem; padding:0 0 8px; border-bottom:1px solid var(--line-strong); }
+  th:first-child, td:first-child{ text-align:left; }
+  td{ text-align:right; padding:7px 0; border-bottom:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-variant-numeric:tabular-nums; }
+  td.name{ font-family:'IBM Plex Sans',sans-serif; }
+  tr:last-child td{ border-bottom:none; }
+  tfoot td{ font-weight:640; border-top:1px solid var(--line-strong); border-bottom:none; padding-top:10px; }
+
+  .netcard{ margin-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; background:var(--surface-2); }
+  .netcard .l{ font-size:.8rem; color:var(--ink-soft); display:block; margin-bottom:3px; }
+  .netcard .v{ font-family:'IBM Plex Mono',monospace; font-size:1.5rem; font-weight:640; }
+
+  .objtiles{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  @media (max-width:920px){ .objtiles{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .objtiles{ grid-template-columns:1fr; } }
+  .objtile{ border:1px solid var(--line); border-radius:12px; padding:14px; }
+  .objtile .name{ font-weight:600; font-size:.92rem; }
+  .objtile .row{ display:flex; justify-content:space-between; font-size:.78rem; color:var(--ink-faint); margin-top:8px; }
+  .objtile .row b{ color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; font-weight:500; }
+  .objtile .zb{ margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-size:.76rem; display:flex; align-items:center; gap:6px; color:var(--ink-faint); }
+
+  .fussnote{ margin-top:18px; font-size:.8rem; color:var(--ink-faint); font-style:italic; }
+
+  .demo-cta{ text-align:center; padding:64px 0 80px; }
+  .demo-cta h2{ font-size:1.7rem; }
+  .demo-cta p{ margin:12px auto 0; }
+  .demo-cta .btns{ display:flex; gap:12px; justify-content:center; margin-top:26px; flex-wrap:wrap; }
+
+  footer{ padding:36px 0 56px; border-top:1px solid var(--line); }
+  .footlegal{ font-size:.78rem; color:var(--ink-faint); max-width:60ch; }
+</style>
+</head>
+<body>
+
+<div class="demoband">
+  <div class="wrap">
+    <div><b>Demo-Ansicht</b> — alle Zahlen auf dieser Seite sind fiktiv und nur zur Veranschaulichung.</div>
+    <a href="index.html">← Zurück zur Startseite</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 17 L10 10 L14 13 L20 6" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="6" r="1.8" fill="white"/>
+        </svg>
+      </span>
+      Essanz
+    </a>
+    <a class="btn btn-primary" href="index.html#cta">Frühzugang anfragen</a>
+  </div>
+</header>
+
+<main>
+  <section style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="eyebrow">So sieht die kostenlose Version aus</div>
+      <h1 style="font-size:clamp(1.7rem,3.2vw,2.3rem); margin-top:12px; max-width:34ch;">Ein Dashboard, das Depots, Konten und Immobilien zu einer Bilanz macht</h1>
+      <p style="margin-top:14px;">Beispielhaftes Ergebnis nach dem Einlesen einer PP‑Datei mit drei Depots, zwei Konten und vier vermieteten Objekten. Alle Werte unten sind erfunden — bei Ihnen erscheinen an dieser Stelle Ihre eigenen Zahlen, automatisch berechnet.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:28px;">
+    <div class="wrap">
+      <div class="dash">
+        <div class="dash-top">
+          <div class="dash-head">
+            <span class="obj">Bestand: 3 Depots · 2 Konten · 4 Objekte</span>
+            <span class="stamp num">Stand 09/2026 · Beispielwerte</span>
+          </div>
+          <div class="hero-fig">
+            <div>
+              <div class="lbl">Nettovermögen</div>
+              <div class="fig">802.000&nbsp;€</div>
+            </div>
+            <div class="deltas">
+              <div class="d"><v class="up">+1,8&nbsp;%</v><s>seit letztem Monat</s></div>
+              <div class="d"><v class="up">+6,4&nbsp;%</v><s>seit Jahresbeginn</s></div>
+              <div class="d"><v class="up">+9,1&nbsp;%</v><s>letzte 12 Monate</s></div>
+            </div>
+          </div>
+          <div class="alloc-strip" aria-hidden="true">
+            <span class="al al-immo" style="width:52%"></span><span class="al al-wp" style="width:34%"></span><span class="al al-liq" style="width:14%"></span>
+          </div>
+          <div class="alloc-legend">
+            <span><i class="sw sw-immo"></i>Immobilien 613.600&nbsp;€ · 52&nbsp;%</span>
+            <span><i class="sw sw-wp"></i>Depots 401.200&nbsp;€ · 34&nbsp;%</span>
+            <span><i class="sw sw-liq"></i>Liquidität 165.200&nbsp;€ · 14&nbsp;%</span>
+          </div>
+        </div>
+
+        <div class="dash-body">
+          <div class="dash-section">
+            <h2>Wo Sie stehen</h2>
+            <p class="note">Fünf Kennzahlen über das gesamte Vermögen, jeden Monat neu berechnet — mit Ampel und Zielwert.</p>
+            <div class="zahlen-grid">
+              <div class="zt">
+                <div class="lbl">Eigenkapitalquote</div>
+                <div class="val"><span class="dot g"></span>38,4&nbsp;%</div>
+                <div class="ziel">Ziel &gt; 25&nbsp;%</div>
+              </div>
+              <div class="zt">
+                <div class="lbl">Kapitaldienstdeckung</div>
+                <div class="val"><span class="dot g"></span>1,31</div>
+                <div class="ziel">Ziel &gt; 1,20</div>
+              </div>
+              <div class="zt">
+                <div class="lbl">Beleihungsauslauf</div>
+                <div class="val"><span class="dot y"></span>61&nbsp;%</div>
+                <div class="ziel">Ziel &lt; 60&nbsp;%</div>
+              </div>
+              <div class="zt">
+                <div class="lbl">Liquiditätspuffer</div>
+                <div class="val"><span class="dot g"></span>7,2 Mon.</div>
+                <div class="ziel">Ziel &gt; 6 Monate</div>
+              </div>
+              <div class="zt">
+                <div class="lbl">Rücklagenquote</div>
+                <div class="val"><span class="dot r"></span>0,6&nbsp;%</div>
+                <div class="ziel">Ziel &gt; 1&nbsp;%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-section">
+            <h2>Bilanz zum Stichtag</h2>
+            <p class="note">Was da ist, was davon der Bank gehört und was bleibt — dieselbe Aufstellung wie im bankfertigen PDF.</p>
+            <div class="two">
+              <div class="card">
+                <div class="bh">Aktiva</div>
+                <table>
+                  <tbody>
+                    <tr><td class="name">Depot Aktien Welt</td><td>210.000&nbsp;€</td></tr>
+                    <tr><td class="name">Depot Dividenden</td><td>120.000&nbsp;€</td></tr>
+                    <tr><td class="name">Depot Anleihen</td><td>71.200&nbsp;€</td></tr>
+                    <tr><td class="name">Girokonto</td><td>25.200&nbsp;€</td></tr>
+                    <tr><td class="name">Tagesgeld</td><td>140.000&nbsp;€</td></tr>
+                    <tr><td class="name">Immobilien (4 Objekte, Verkehrswert)</td><td>613.600&nbsp;€</td></tr>
+                  </tbody>
+                  <tfoot><tr><td>Summe Aktiva</td><td>1.180.000&nbsp;€</td></tr></tfoot>
+                </table>
+              </div>
+              <div class="card">
+                <div class="bh">Passiva</div>
+                <table>
+                  <tbody>
+                    <tr><td class="name">Darlehen Bergstraße 14</td><td>128.000&nbsp;€</td></tr>
+                    <tr><td class="name">Darlehen Ahornweg 7</td><td>96.000&nbsp;€</td></tr>
+                    <tr><td class="name">Darlehen Lindenallee 22</td><td>94.000&nbsp;€</td></tr>
+                    <tr><td class="name">Darlehen Rosenweg 3</td><td>60.000&nbsp;€</td></tr>
+                  </tbody>
+                  <tfoot><tr><td>Summe Passiva</td><td>378.000&nbsp;€</td></tr></tfoot>
+                </table>
+              </div>
+            </div>
+            <div class="card netcard">
+              <div><span class="l">Nettovermögen (Aktiva − Passiva)</span></div>
+              <div class="v">802.000&nbsp;€</div>
+            </div>
+          </div>
+
+          <div class="dash-section">
+            <h2>Immobilien im Einzelnen</h2>
+            <p class="note">Je Objekt Verkehrswert, Restschuld, Eigenkapitalquote und nächste Zinsbindung — die Auswertungsebene, die Portfolio Performance allein nicht bietet.</p>
+            <div class="objtiles">
+              <div class="objtile">
+                <div class="name">Bergstraße 14</div>
+                <div class="row"><span>Verkehrswert</span><b>210.000&nbsp;€</b></div>
+                <div class="row"><span>Restschuld</span><b>128.000&nbsp;€</b></div>
+                <div class="row"><span>Eigenkapital</span><b>39&nbsp;%</b></div>
+                <div class="zb"><span class="dot y"></span>Zinsbindung endet 03/2027</div>
+              </div>
+              <div class="objtile">
+                <div class="name">Ahornweg 7</div>
+                <div class="row"><span>Verkehrswert</span><b>165.000&nbsp;€</b></div>
+                <div class="row"><span>Restschuld</span><b>96.000&nbsp;€</b></div>
+                <div class="row"><span>Eigenkapital</span><b>42&nbsp;%</b></div>
+                <div class="zb"><span class="dot g"></span>Zinsbindung endet 11/2029</div>
+              </div>
+              <div class="objtile">
+                <div class="name">Lindenallee 22</div>
+                <div class="row"><span>Verkehrswert</span><b>148.600&nbsp;€</b></div>
+                <div class="row"><span>Restschuld</span><b>94.000&nbsp;€</b></div>
+                <div class="row"><span>Eigenkapital</span><b>37&nbsp;%</b></div>
+                <div class="zb"><span class="dot g"></span>Zinsbindung endet 06/2028</div>
+              </div>
+              <div class="objtile">
+                <div class="name">Rosenweg 3</div>
+                <div class="row"><span>Verkehrswert</span><b>90.000&nbsp;€</b></div>
+                <div class="row"><span>Restschuld</span><b>60.000&nbsp;€</b></div>
+                <div class="row"><span>Eigenkapital</span><b>33&nbsp;%</b></div>
+                <div class="zb"><span class="dot g"></span>Zinsbindung endet 09/2031</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fussnote">Alle Namen, Adressen und Zahlen auf dieser Seite sind frei erfunden und dienen ausschließlich der Veranschaulichung. Sie entsprechen keinem realen Bestand.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-cta">
+    <div class="wrap">
+      <h2>So würde Ihr eigenes Dashboard aussehen — mit Ihren echten Zahlen</h2>
+      <p style="margin-left:auto; margin-right:auto;">Essanz ist noch in der Konzeptphase. Wer sich jetzt einträgt, testet als Erstes mit der eigenen PP‑Datei.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="index.html#cta">Frühzugang sichern</a>
+        <a class="btn btn-ghost" href="index.html">Zurück zur Startseite</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footlegal">Essanz — ein unabhängiges Projekt, entstanden aus der eigenen Immobilienverwaltung mit Portfolio Performance. Diese Demo zeigt ausschließlich fiktive Beispielwerte. Kein Angebot einer Kapitalanlage, keine Anlage‑ oder Steuerberatung.</div>
+  </div>
+</footer>
+
+</body>
+</html>

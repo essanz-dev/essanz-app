@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
 <meta name="description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Depots, Konten und Immobilien in einem Dashboard, Bankbericht und Excel-Export.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%231F7A5C'/%3E%3Cpath d='M4 17 L10 10 L14 13 L20 6' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='20' cy='6' r='1.9' fill='white'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Essanz">
+<meta property="og:title" content="Essanz — Gesamtvermögensbilanz für Portfolio-Performance-Nutzer">
+<meta property="og:description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Depots, Konten und Immobilien in einem Dashboard, Bankbericht und Excel-Export.">
+<meta property="og:url" content="https://essanz-dev.github.io/essanz-app/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Essanz — Gesamtvermögensbilanz für Portfolio-Performance-Nutzer">
+<meta name="twitter:description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Depots, Konten und Immobilien in einem Dashboard, Bankbericht und Excel-Export.">
 <title>Essanz</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
@@ -294,7 +303,6 @@
 </style>
 </head>
 <body>
-
 <header class="site">
   <div class="wrap nav">
     <div class="brand">
@@ -327,9 +335,9 @@
         <p class="lede anim-in d2">Essanz liest Ihre vorhandene PP‑Datei und führt Depots, Konten und Immobilien zu einer echten Bilanz zusammen: fünf Kennzahlen über das gesamte Vermögen, ein Dashboard, ein bankfertiger PDF‑Bericht und eine Excel‑Auswertung – jeden Monat neu, lokal auf Ihrem eigenen Rechner.</p>
         <div class="hero-ctas anim-in d3">
           <a class="btn btn-primary" href="#cta">Frühzugang anfragen</a>
-          <a class="btn btn-ghost" href="#funktion">So funktioniert's</a>
+          <a class="btn btn-ghost" href="demo.html">Live-Demo ansehen</a>
         </div>
-        <div class="hero-note anim-in d3">Open Source · läuft lokal · nichts wird an einen Server geschickt</div>
+        <div class="hero-note anim-in d3">Open Source · läuft lokal · nichts wird an einen Server geschickt · <a href="https://github.com/essanz-dev/essanz-app" style="text-decoration:underline;">Quellcode auf GitHub</a></div>
       </div>
 
       <div class="mock anim-in d2">
@@ -515,6 +523,14 @@
           <summary>Wann kommt Premium?<span class="plus">+</span></summary>
           <p>Nach einer ersten Testphase mit echten PP‑Nutzern. Wer sich jetzt einträgt, entscheidet mit, welche Funktionen zuerst kommen.</p>
         </details>
+        <details>
+          <summary>Wie pflege ich Immobilien in Portfolio Performance ein?<span class="plus">+</span></summary>
+          <p>Am gängigsten: Sie legen die Immobilie als Wertpapier an (Kurs = Verkehrswert) und ein separates Konto für Mieteinnahmen, Kreditraten und Instandhaltungsrücklage – beides der Anlageklasse „Immobilien" zugeordnet. Mieten buchen Sie als Dividende, Tilgung als Zukauf. Essanz braucht darüber hinaus nur wenige Zusatzangaben je Objekt (Zinsbindung, Bodenrichtwert, Wohnfläche), die PP gar nicht erst vorsieht – die tragen Sie einmalig separat ein, alles andere zieht Essanz automatisch aus Ihrer PP‑Datei.</p>
+        </details>
+        <details>
+          <summary>Wie sieht ein Ergebnis der kostenlosen Variante aus?<span class="plus">+</span></summary>
+          <p>Am besten selbst ansehen: Die Demo zeigt das komplette Dashboard der kostenlosen Version mit fiktiven Beispielwerten – Gesamtvermögensbilanz, Aufteilung nach Depots/Konten/Immobilien und alle fünf Kennzahlen im Ampel‑System, genau wie es nach dem Einlesen Ihrer eigenen PP‑Datei aussehen würde. <a href="demo.html">Demo ansehen →</a></p>
+        </details>
       </div>
     </div>
   </section>
@@ -531,7 +547,7 @@
             <input type="email" name="email" placeholder="ihre@email.de" required aria-label="E-Mail-Adresse">
             <button class="btn btn-primary" type="submit">Eintragen</button>
           </div>
-          <div class="fine">Unverbindlich. Keine Weitergabe an Dritte.</div>
+          <div class="fine">Unverbindlich. Nur für den Rückkontakt zu Essanz, keine Weitergabe zu anderen Zwecken.</div>
         </form>
       </div>
     </div>
@@ -553,5 +569,4 @@
   </div>
 </footer>
 
-</body>
 </html>
