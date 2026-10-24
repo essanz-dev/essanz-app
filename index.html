@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<meta name="description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Depots, Konten und Immobilien in einem Dashboard, Bankbericht und Excel-Export.">
+<meta name="description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Vermögensbilanz mit Immobilien und Darlehen aus der eigenen PP-Datei, lokal im Browser: Eigenkapitalquote, Beleihung, Kapitaldienstdeckung, Zinsbindungen.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%231F7A5C'/%3E%3Cpath d='M4 17 L10 10 L14 13 L20 6' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='20' cy='6' r='1.9' fill='white'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Essanz">
 <meta property="og:title" content="Essanz — Gesamtvermögensbilanz für Portfolio-Performance-Nutzer">
-<meta property="og:description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Depots, Konten und Immobilien in einem Dashboard, Bankbericht und Excel-Export.">
+<meta property="og:description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Vermögensbilanz mit Immobilien und Darlehen aus der eigenen PP-Datei, lokal im Browser: Eigenkapitalquote, Beleihung, Kapitaldienstdeckung, Zinsbindungen.">
 <meta property="og:url" content="https://essanz-dev.github.io/essanz-app/">
 <meta property="og:image" content="https://essanz-dev.github.io/essanz-app/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Essanz — Ihr gesamtes Vermögen in Bankqualität, inklusive Immobilien">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Essanz — Gesamtvermögensbilanz für Portfolio-Performance-Nutzer">
-<meta name="twitter:description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Depots, Konten und Immobilien in einem Dashboard, Bankbericht und Excel-Export.">
+<meta name="twitter:description" content="Gesamtvermögensbilanz für Portfolio-Performance-Nutzer: Vermögensbilanz mit Immobilien und Darlehen aus der eigenen PP-Datei, lokal im Browser: Eigenkapitalquote, Beleihung, Kapitaldienstdeckung, Zinsbindungen.">
 <meta name="twitter:image" content="https://essanz-dev.github.io/essanz-app/og-image.png">
 <title>Essanz</title>
 <style>
@@ -249,7 +249,7 @@
   }
   .plan.premium{ border-color:var(--accent); position:relative; }
   .plan.premium::before{
-    content:"Empfohlen für Bankgespräche"; position:absolute; top:-12px; left:28px;
+    content:"Geplant"; position:absolute; top:-12px; left:28px;
     background:var(--accent); color:var(--accent-ink); font-size:.7rem; font-weight:600;
     padding:4px 10px; border-radius:99px; letter-spacing:.02em;
   }
@@ -323,11 +323,11 @@
     <nav class="navlinks">
       <a href="#funktion">Funktionen</a>
       <a href="#zahlen">Die fünf Zahlen</a>
-      <a href="#preise">Preise</a>
+      <a href="#preise">Umfang</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="navcta">
-      <a class="btn btn-primary" href="#cta">Frühzugang</a>
+      <a class="btn btn-primary" href="https://essanz-dev.github.io/essanz-core/">Ausprobieren</a>
     </div>
   </div>
 </header>
@@ -337,13 +337,13 @@
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow anim-in">Gesamtvermögensbilanz für Portfolio‑Performance‑Nutzer</div>
-        <h1 class="anim-in d1">Ihr gesamtes Vermögen in Bankqualität – inklusive der Immobilien, die Portfolio Performance allein nicht abbildet.</h1>
-        <p class="lede anim-in d2">Essanz liest Ihre vorhandene PP‑Datei und führt Depots, Konten und Immobilien zu einer echten Bilanz zusammen: fünf Kennzahlen über das gesamte Vermögen, ein Dashboard, ein bankfertiger PDF‑Bericht und eine Excel‑Auswertung – jeden Monat neu, lokal auf Ihrem eigenen Rechner.</p>
+        <h1 class="anim-in d1">Aus Ihrer Portfolio‑Performance‑Datei die Vermögensbilanz mit Immobilien und Darlehen.</h1>
+        <p class="lede anim-in d2">Netto‑Vermögen, Eigenkapitalquote, Beleihungsauslauf, Kapitaldienstdeckung und auslaufende Zinsbindungen – die Zahlen, auf die Ihre Bank schaut, für alle Objekte und Depots zusammen. Ohne Abtippen aus Ihrer vorhandenen PP‑Datei, ausgewertet lokal in Ihrem Browser.</p>
         <div class="hero-ctas anim-in d3">
-          <a class="btn btn-primary" href="#cta">Frühzugang anfragen</a>
-          <a class="btn btn-ghost" href="demo.html">Live-Demo ansehen</a>
+          <a class="btn btn-primary" href="https://essanz-dev.github.io/essanz-core/">Im Browser ausprobieren</a>
+          <a class="btn btn-ghost" href="https://essanz-dev.github.io/essanz-core/">Beispieldatei ansehen</a>
         </div>
-        <div class="hero-note anim-in d3">Open Source · läuft lokal · nichts wird an einen Server geschickt · <a href="https://github.com/essanz-dev/essanz-core" style="text-decoration:underline;">Quellcode auf GitHub</a></div>
+        <div class="hero-note anim-in d3">Kostenlos · Open Source · Ihre Datei verlässt den Rechner nicht · <a href="https://github.com/essanz-dev/essanz-core" style="text-decoration:underline;">Quellcode auf GitHub</a></div>
       </div>
 
       <div class="mock anim-in d2">
@@ -403,7 +403,7 @@
       </div>
       <div>
         <p><strong>Portfolio Performance zeigt jedes Depot exzellent – aber einzeln.</strong> Eine Bank fragt beim Rating- oder Prolongationsgespräch nie „wie läuft Depot A", sie fragt „wie sieht Ihr Vermögen insgesamt aus": Eigenkapitalquote, Liquiditätspuffer, Beleihung – immer über alles zusammen. Sobald eine vermietete Immobilie dazukommt, wird die Lücke noch größer: Zinsbindung, Restschuld am Ende der Bindungsfrist, Bodenrichtwert – das bildet PP gar nicht erst ab. Also entsteht neben PP fast immer eine zweite, handgepflegte Excel‑Tabelle, die beides notdürftig zusammenführt.</p>
-        <p>Essanz übernimmt genau diese Zusammenführung: Depots, Konten und – wo vorhanden – Immobilien in einer Bilanz, dieselben fünf Kennzahlen über das gesamte Vermögen, jeden Monat neu berechnet, mit Ampel‑Einordnung und einem Bericht, den man ohne Nacharbeit in ein Bankgespräch mitnehmen kann.</p>
+        <p>Essanz übernimmt genau diese Zusammenführung: Depots, Konten und – wo vorhanden – Immobilien in einer Bilanz, dieselben fünf Kennzahlen über das gesamte Vermögen, jeden Monat neu berechnet, mit Ampel‑Einordnung und einem Dashboard, das sich speichern und auf Wunsch anonymisiert weitergeben lässt.</p>
       </div>
     </div>
   </section>
@@ -412,23 +412,23 @@
     <div class="wrap">
       <div class="steps-head">
         <div class="eyebrow">Ablauf</div>
-        <h2>Drei Schritte, danach läuft es von&nbsp;allein</h2>
+        <h2>Drei Schritte, danach genügt ein&nbsp;Klick</h2>
       </div>
       <div class="steplist">
         <div class="step">
           <div class="n">01</div>
-          <h3>PP‑Datei einlesen</h3>
-          <p>Essanz öffnet Ihre bestehende <span class="num">.portfolio</span>‑Datei lokal. Nichts wird hochgeladen, nichts verlässt Ihren Rechner – und Essanz schreibt selbst nie in die Datei zurück.</p>
+          <h3>PP‑Datei im Browser öffnen</h3>
+          <p>Essanz liest Ihre bestehende <span class="num">.portfolio</span>‑Datei direkt im Browser, auch mit Passwort geschützte. Nichts wird hochgeladen, und Essanz schreibt nie in die Datei zurück.</p>
         </div>
         <div class="step">
           <div class="n">02</div>
-          <h3>Objektdaten einmalig ergänzen</h3>
-          <p>Zinsbindungen, Mietverträge, Bodenrichtwerte: einmal eintragen. Danach fließt alles automatisch in jede künftige Auswertung ein.</p>
+          <h3>Einmal zuordnen und ergänzen</h3>
+          <p>Welches Konto gehört zu welcher Immobilie, welches Darlehen läuft wann aus: einmal im Formular festlegen und als Datei speichern. Ihre Kontennamen in PP bleiben, wie sie sind.</p>
         </div>
         <div class="step">
           <div class="n">03</div>
-          <h3>Monatlich auf Knopfdruck</h3>
-          <p>Dashboard, Bankbericht und Excel‑Datei aktualisieren sich mit einem Klick – inklusive Prüfroutinen, die stille Fehler abfangen, bevor Sie sie sehen.</p>
+          <h3>Bilanz ansehen und speichern</h3>
+          <p>Das Dashboard mit Bilanz, Kennzahlen, Fälligkeitsleiste und Stresstests entsteht in Sekunden und lässt sich als Datei speichern, auf Wunsch anonymisiert zum Weitergeben.</p>
         </div>
       </div>
     </div>
@@ -477,33 +477,33 @@
   <section class="pricing" id="preise">
     <div class="wrap">
       <div class="pricing-head">
-        <div class="eyebrow">Preise</div>
-        <h2>Kostenlos starten, bei Bedarf erweitern</h2>
+        <div class="eyebrow">Umfang</div>
+        <h2>Was Essanz heute kann</h2>
       </div>
       <div class="plans">
         <div class="plan free">
           <div class="plan-name">Essanz</div>
           <div class="plan-price">0&nbsp;€ <small>Open Source</small></div>
           <ul>
-            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>PP‑Datei lokal einlesen, keine Cloud, keine Registrierung</li>
+            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>PP‑Datei im Browser öffnen, keine Cloud, keine Registrierung</li>
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Gesamtvermögensbilanz aus allen Depots und Konten, fünf Kennzahlen im Ampel‑System</li>
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Wer vermietet: Objektsteckbriefe &amp; Darlehensspiegel je Objekt, mit in der Bilanz</li>
-            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Excel‑Export für die eigene Weiterverarbeitung</li>
+            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Zinsbindungs‑Fälligkeiten, Stresstests und eine Liquiditätsvorschau</li>
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Quelloffen, Community‑Support auf GitHub</li>
           </ul>
-          <div class="plan-note">Reicht für die eigene Übersicht völlig aus.</div>
+          <div class="plan-note">Läuft heute, im Browser oder auf der Kommandozeile.</div>
         </div>
         <div class="plan premium">
-          <div class="plan-name">Essanz Premium</div>
-          <div class="plan-price">ab 3&nbsp;€ <small>/ Monat</small></div>
+          <div class="plan-name">In Arbeit</div>
+          <div class="plan-price">Bald <small>in der Testphase</small></div>
           <ul>
-            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alles aus der kostenlosen Version</li>
-            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Bankfertiges PDF für Prolongationsgespräche &amp; Rating‑Unterlagen</li>
-            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>300+ automatische Prüfungen bei jeder Aktualisierung</li>
+            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unterlagen für das Bankgespräch als PDF</li>
+            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vermögensaufstellung für die Selbstauskunft</li>
+            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Automatische Prüfungen bei jeder Aktualisierung</li>
             <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Frühwarnungen: auslaufende Zinsbindung, kippende Kennzahl</li>
-            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Monatsprotokoll &amp; Entscheidungstagebuch automatisch geführt</li>
+            <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5 8 14.5 16 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Was davon zuerst kommt, entscheiden die Gespräche mit Nutzern</li>
           </ul>
-          <div class="plan-note">Preis vorläufig – richtet sich danach, was die Community wirklich nutzt.</div>
+          <div class="plan-note">Noch nicht verfügbar. Ob und zu welchen Bedingungen, klären wir in der Testphase.</div>
         </div>
       </div>
     </div>
@@ -526,16 +526,16 @@
           <p>Ein PP‑Nutzer, der genau dieses Werkzeug zuerst für die eigene vermietete Immobilien gebaut hat – und es jetzt für alle öffnet, die vor demselben Problem stehen.</p>
         </details>
         <details>
-          <summary>Wann kommt Premium?<span class="plus">+</span></summary>
-          <p>Nach einer ersten Testphase mit echten PP‑Nutzern. Wer sich jetzt einträgt, entscheidet mit, welche Funktionen zuerst kommen.</p>
+          <summary>Was kostet Essanz?<span class="plus">+</span></summary>
+          <p>Nichts. Der Kern ist quelloffen (AGPL‑3.0) und bleibt kostenlos. Ob es zusätzlich Bankunterlagen als PDF gibt, klären wir in der Testphase mit Nutzern.</p>
         </details>
         <details>
           <summary>Wie pflege ich Immobilien in Portfolio Performance ein?<span class="plus">+</span></summary>
-          <p>Am gängigsten: Sie legen die Immobilie als Wertpapier an (Kurs = Verkehrswert) und ein separates Konto für Mieteinnahmen, Kreditraten und Instandhaltungsrücklage – beides der Anlageklasse „Immobilien" zugeordnet. Mieten buchen Sie als Dividende, Tilgung als Zukauf. Essanz braucht darüber hinaus nur wenige Zusatzangaben je Objekt (Zinsbindung, Bodenrichtwert, Wohnfläche), die PP gar nicht erst vorsieht – die tragen Sie einmalig separat ein, alles andere zieht Essanz automatisch aus Ihrer PP‑Datei.</p>
+          <p>Je Immobilie ein Wertpapier ohne ISIN (Kurs = Verkehrswert) in einem eigenen Immobilien‑Depot, ein Konto für Miete und Kosten und je Darlehen ein eigenes Konto. Miete buchen Sie als Dividende, die Darlehensauszahlung und die Raten als Umbuchung zwischen Darlehens‑ und Objektkonto, den Zinsanteil als Zinsbelastung. Was PP nicht kennt (Zinsbindung, Sollzins), tragen Sie einmalig im Formular ein. Die vollständige Anleitung steht in der <a href="https://essanz-dev.github.io/essanz-core/#anleitung">App</a>.</p>
         </details>
         <details>
-          <summary>Wie sieht ein Ergebnis der kostenlosen Variante aus?<span class="plus">+</span></summary>
-          <p>Am besten selbst ansehen: Die Demo zeigt das komplette Dashboard der kostenlosen Version mit fiktiven Beispielwerten – Gesamtvermögensbilanz, Aufteilung nach Depots/Konten/Immobilien und alle fünf Kennzahlen im Ampel‑System, genau wie es nach dem Einlesen Ihrer eigenen PP‑Datei aussehen würde. <a href="demo.html">Demo ansehen →</a></p>
+          <summary>Wie sieht ein Ergebnis aus?<span class="plus">+</span></summary>
+          <p>Am besten selbst ansehen: In der App öffnet „Beispieldatei ansehen“ eine frei erfundene PP‑Datei mit drei Objekten und zeigt Prüfung und Dashboard, genau wie bei Ihrer eigenen Datei. <a href="https://essanz-dev.github.io/essanz-core/">Zur App →</a></p>
         </details>
       </div>
     </div>
@@ -545,16 +545,16 @@
     <div class="wrap">
       <div class="cta-box">
         <div>
-          <h2>Frühzugang sichern</h2>
-          <p>Essanz ist noch in der Konzeptphase. Wer sich jetzt meldet, testet als Erstes mit der eigenen PP‑Datei und bekommt Premium in der Anfangszeit vergünstigt.</p>
+          <h2>Mit der eigenen Datei testen</h2>
+          <p>Essanz ist in der Testphase. Wenn Sie Immobilien mit Darlehen in Portfolio Performance führen und 30 Minuten Zeit haben, gehen wir Ihre Datei gemeinsam durch – Sie teilen nur den Bildschirm, die Datei bleibt bei Ihnen. Ihre Rückmeldung entscheidet, was als Nächstes kommt.</p>
         </div>
         <form class="signup" action="https://formspree.io/f/mnpqvezn" method="POST">
-          <input type="hidden" name="_subject" value="Essanz – neue Anmeldung Frühzugang">
+          <input type="hidden" name="_subject" value="Essanz – Interesse an einem Testgespräch">
           <input type="hidden" name="_next" value="danke.html">
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <div class="row">
             <input type="email" name="email" placeholder="ihre@email.de" required aria-label="E-Mail-Adresse">
-            <button class="btn btn-primary" type="submit">Eintragen</button>
+            <button class="btn btn-primary" type="submit">Melden</button>
           </div>
           <div class="fine">Unverbindlich. Nur für den Rückkontakt zu Essanz, keine Weitergabe zu anderen Zwecken. Verarbeitung technisch über unseren Formular‑Dienstleister Formspree.</div>
         </form>
